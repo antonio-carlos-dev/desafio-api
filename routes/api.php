@@ -14,6 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['namespace' => 'Api'], function () {
+    Route::group(['prefix' => 'users'], function () {
+        Route::post('/create', 'ApiAuthController@create'); //Swagger
+        Route::post('/login', 'ApiAuthController@login'); //Swagger
+        Route::post('/reset', 'ForgotPasswordController@reset'); //Swagger
+    });
+});
+
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::group(['namespace' => 'Api'], function () {
+        Route::post('/user/token', 'ApiAuthController@token'); //Swagger
+    });
 });
