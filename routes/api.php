@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,16 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['namespace' => 'Api'], function () {
-    Route::group(['prefix' => 'users'], function () {
-        Route::post('/create', 'ApiAuthController@create'); //Swagger
-        Route::post('/login', 'ApiAuthController@login'); //Swagger
-        Route::post('/reset', 'ForgotPasswordController@reset'); //Swagger
-    });
-});
+Route::post('/auth/register', [AuthController::class, 'register']);
+Route::post('/auth/login', [AuthController::class, 'login']);
 
-Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::group(['namespace' => 'Api'], function () {
-        Route::post('/user/token', 'ApiAuthController@token'); //Swagger
-    });
-});
+Route::apiResource('users', UserController::class)->middleware('auth:sanctum');
+Route::apiResource('columns', UserController::class)->middleware('auth:sanctum');
