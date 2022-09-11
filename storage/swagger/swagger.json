@@ -5,9 +5,8 @@
         "contact": {},
         "version": "1.0"
     },
-
     "servers": [{
-        "url": "http://desafio-api.teste/api",
+        "url": "http://localhost:8080/api",
         "variables": {}
     }],
     "paths": {
