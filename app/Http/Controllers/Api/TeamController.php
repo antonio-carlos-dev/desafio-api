@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\Column;
+use App\Http\Controllers\Api\ApiBaseController;
 use App\Models\Project;
+use App\Models\Team;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class ProjectController extends ApiBaseController
+class TeamController extends ApiBaseController
 {
 
     protected $model;
 
-    public function __construct( Project $model )
+    public function __construct( Team $model )
     {
         $this->model = $model;
     }
@@ -24,15 +25,16 @@ class ProjectController extends ApiBaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function showColumns(Request $request, $id)
+    public function showProjects(Request $request, $id)
     {
         try{
-            $models = Column::whereProjectId($id)->get();
+            $models = Project::whereTeamId($id)->get();
             return $this->sendSuccess($models,'Success', $code = 200);
         }catch(Exception $e ) {
             return $this->sendError($request,  $e );
         }
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -43,10 +45,10 @@ class ProjectController extends ApiBaseController
     public function store(Request $request)
     {
         try{
+
             $validator = Validator::make($request->all(),
             [
                 'name' => 'required',
-                'team_id' => 'required',
             ]);
 
             if($validator->fails()){
@@ -56,15 +58,12 @@ class ProjectController extends ApiBaseController
                     'data' => $validator->errors()
                 ], 401);
             }
-            $data = $validator->validated();
-            $data['user_id'] = auth()->user()->id;
-            $model = $this->model->create($data);
-            return $this->sendSuccess($model,'Project Created Successfully', $code = 200);
+            $team = $this->model->create($validator->validated());
+            return $this->sendSuccess($team,'Team Created Successfully', $code = 200);
         }catch(Exception $e ) {
             return $this->sendError($request,  $e );
         }
     }
-
 
     /**
      * Update the specified resource in storage.
@@ -76,11 +75,12 @@ class ProjectController extends ApiBaseController
     public function update(Request $request,  $id)
     {
         try{
-            $validator = Validator::make($request->all(),
-            [
-                'name' => 'required',
-                'team_id' => 'required',
-            ]);
+
+            $validator = Validator::make(
+                $request->all(),
+                [ 'name' => 'required']
+            );
+            $model = $this->model->find($id);
 
             if($validator->fails()){
                 return response()->json([
@@ -89,11 +89,9 @@ class ProjectController extends ApiBaseController
                     'data' => $validator->errors()
                 ], 401);
             }
-            $data = $validator->validated();
-            $model = $this->model->find($id);
-            $model->update($data);
-            return $this->sendSuccess($model->fresh(),'Project Updated Successfully', $code = 200);
-        } catch(Exception $e ) {
+            $model->update($validator->validated());
+            return $this->sendSuccess($model->fresh(),'Team Updated Successfully', $code = 200);
+        }catch(Exception $e ) {
             return $this->sendError($request,  $e );
         }
     }

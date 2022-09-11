@@ -2,32 +2,36 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\Column;
-use App\Models\Project;
+use App\Http\Requests\StoreCardRequest;
+use App\Http\Requests\UpdateCardRequest;
+use App\Models\Card;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class ProjectController extends ApiBaseController
+class CardController extends ApiBaseController
 {
 
     protected $model;
 
-    public function __construct( Project $model )
+    public function __construct( Card $model )
     {
         $this->model = $model;
     }
 
     /**
-     * Display the specified resource.
+     * Display a listing of the resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function showColumns(Request $request, $id)
+    public function index(Request $request)
     {
         try{
-            $models = Column::whereProjectId($id)->get();
+            $models = $this->model->orderBy('order')
+            ->whereHas('column' , function( $query){
+                $query->orderBy('order');
+            })->get();
+            $models = $models->groupBy('column_id');
             return $this->sendSuccess($models,'Success', $code = 200);
         }catch(Exception $e ) {
             return $this->sendError($request,  $e );
@@ -45,8 +49,11 @@ class ProjectController extends ApiBaseController
         try{
             $validator = Validator::make($request->all(),
             [
+                'column_id' => 'required',
                 'name' => 'required',
-                'team_id' => 'required',
+                'description' => 'required',
+                'estimated_date' => 'required',
+                'tag' => 'required',
             ]);
 
             if($validator->fails()){
@@ -57,9 +64,9 @@ class ProjectController extends ApiBaseController
                 ], 401);
             }
             $data = $validator->validated();
-            $data['user_id'] = auth()->user()->id;
+            $data['order'] = $this->order($data);
             $model = $this->model->create($data);
-            return $this->sendSuccess($model,'Project Created Successfully', $code = 200);
+            return $this->sendSuccess($model,'Column Created Successfully', $code = 200);
         }catch(Exception $e ) {
             return $this->sendError($request,  $e );
         }
@@ -78,8 +85,11 @@ class ProjectController extends ApiBaseController
         try{
             $validator = Validator::make($request->all(),
             [
+                'column_id' => 'required',
                 'name' => 'required',
-                'team_id' => 'required',
+                'description' => 'required',
+                'estimated_date' => 'required',
+                'tag' => 'required',
             ]);
 
             if($validator->fails()){
@@ -92,9 +102,15 @@ class ProjectController extends ApiBaseController
             $data = $validator->validated();
             $model = $this->model->find($id);
             $model->update($data);
-            return $this->sendSuccess($model->fresh(),'Project Updated Successfully', $code = 200);
+            return $this->sendSuccess($model->fresh(),'Column Updated Successfully', $code = 200);
         } catch(Exception $e ) {
             return $this->sendError($request,  $e );
         }
+    }
+
+    private function order($data)
+    {
+        $max = Card::whereColumnId($data['column_id'])->max('order') ;
+        return  $max  + 1;
     }
 }

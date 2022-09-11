@@ -1,7 +1,11 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\ColumnController;
+use App\Http\Controllers\Api\ProjectController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\TeamController;
+use App\Http\Controllers\Api\CardController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,4 +24,10 @@ Route::post('/auth/register', [AuthController::class, 'register']);
 Route::post('/auth/login', [AuthController::class, 'login']);
 
 Route::apiResource('users', UserController::class)->middleware('auth:sanctum');
-Route::apiResource('columns', UserController::class)->middleware('auth:sanctum');
+Route::apiResource('teams', TeamController::class)->middleware('auth:sanctum');
+Route::get('teams/{id}/projects', [TeamController::class, 'showProjects' ])->middleware('auth:sanctum');
+Route::apiResource('projects', ProjectController::class)->middleware('auth:sanctum');
+Route::get('projects/{id}/columns', [ProjectController::class, 'showColumns'])->middleware('auth:sanctum');
+Route::apiResource('columns', ColumnController::class)->middleware('auth:sanctum');
+Route::get('columns/{id}/cards', [ColumnController::class, 'showCards'])->middleware('auth:sanctum');
+Route::apiResource('cards', CardController::class)->middleware('auth:sanctum');
