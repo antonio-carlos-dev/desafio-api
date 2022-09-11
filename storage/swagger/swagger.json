@@ -6,7 +6,7 @@
         "version": "1.0"
     },
     "servers": [{
-        "url": "http://localhost:8080/api",
+        "url": "http://desafio-api.teste/api",
         "variables": {}
     }],
     "paths": {
@@ -328,6 +328,90 @@
                 "summary": "List",
                 "operationId": "GetList1",
                 "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                },
+                "deprecated": false,
+                "security": [{
+                    "bearer": []
+                }]
+            }
+        },
+        "/teams/1/associate": {
+            "post": {
+                "tags": [
+                    "Team"
+                ],
+                "summary": "Team Associate User",
+                "operationId": "TeamAssociateUser",
+                "parameters": [],
+                "requestBody": {
+                    "description": "",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [{
+                                        "$ref": "#/components/schemas/TeamAssociateUserRequest"
+                                    },
+                                    {
+                                        "example": {
+                                            "user_id": 4
+                                        }
+                                    }
+                                ]
+                            },
+                            "example": {
+                                "user_id": 4
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                },
+                "deprecated": false,
+                "security": [{
+                    "bearer": []
+                }]
+            }
+        },
+        "/teams/1/disassociate": {
+            "post": {
+                "tags": [
+                    "Team"
+                ],
+                "summary": "Team Disassociate User",
+                "operationId": "TeamDisassociateUser",
+                "parameters": [],
+                "requestBody": {
+                    "description": "",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [{
+                                        "$ref": "#/components/schemas/TeamDisassociateUserRequest"
+                                    },
+                                    {
+                                        "example": {
+                                            "user_id": 4
+                                        }
+                                    }
+                                ]
+                            },
+                            "example": {
+                                "user_id": 4
+                            }
+                        }
+                    },
+                    "required": true
+                },
                 "responses": {
                     "200": {
                         "description": "",
@@ -931,6 +1015,38 @@
                 },
                 "example": {
                     "name": "Key Team"
+                }
+            },
+            "TeamAssociateUserRequest": {
+                "title": "TeamAssociateUserRequest",
+                "required": [
+                    "user_id"
+                ],
+                "type": "object",
+                "properties": {
+                    "user_id": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "example": {
+                    "user_id": 4
+                }
+            },
+            "TeamDisassociateUserRequest": {
+                "title": "TeamDisassociateUserRequest",
+                "required": [
+                    "user_id"
+                ],
+                "type": "object",
+                "properties": {
+                    "user_id": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "example": {
+                    "user_id": 4
                 }
             },
             "UpdateRequest2": {
