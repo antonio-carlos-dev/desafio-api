@@ -5,6 +5,7 @@
         "contact": {},
         "version": "1.0"
     },
+
     "servers": [{
         "url": "http://desafio-api.teste/api",
         "variables": {}
