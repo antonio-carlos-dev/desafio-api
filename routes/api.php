@@ -26,6 +26,8 @@ Route::post('/auth/login', [AuthController::class, 'login']);
 Route::apiResource('users', UserController::class)->middleware('auth:sanctum');
 Route::apiResource('teams', TeamController::class)->middleware('auth:sanctum');
 Route::get('teams/{id}/projects', [TeamController::class, 'showProjects' ])->middleware('auth:sanctum');
+Route::post('teams/{id}/associate', [TeamController::class, 'associate' ])->middleware('auth:sanctum');
+Route::post('teams/{id}/disassociate', [TeamController::class, 'disassociate' ])->middleware('auth:sanctum');
 Route::apiResource('projects', ProjectController::class)->middleware('auth:sanctum');
 Route::get('projects/{id}/columns', [ProjectController::class, 'showColumns'])->middleware('auth:sanctum');
 Route::apiResource('columns', ColumnController::class)->middleware('auth:sanctum');

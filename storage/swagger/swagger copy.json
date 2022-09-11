@@ -1,0 +1,1164 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Desafio Api",
+        "contact": {},
+        "version": "1.0"
+    },
+    "servers": [{
+        "url": "http://localhost:8080/api",
+        "variables": {}
+    }],
+    "paths": {
+        "/users": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Create",
+                "operationId": "Create",
+                "parameters": [],
+                "requestBody": {
+                    "description": "",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [{
+                                        "$ref": "#/components/schemas/CreateRequest"
+                                    },
+                                    {
+                                        "example": {
+                                            "client_id": "4KUoeIdh2/l5Y9J6VcOp9lY",
+                                            "email": "john.doe@gmail.com",
+                                            "password": "12345678aA!",
+                                            "name": "John Doe"
+                                        }
+                                    }
+                                ]
+                            },
+                            "example": {
+                                "client_id": "4KUoeIdh2/l5Y9J6VcOp9lY",
+                                "email": "john.doe@gmail.com",
+                                "password": "12345678aA!",
+                                "name": "John Doe"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                },
+                "deprecated": false,
+                "security": [{
+                    "bearer": []
+                }]
+            },
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "List",
+                "operationId": "List",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                },
+                "deprecated": false,
+                "security": [{
+                    "bearer": []
+                }]
+            }
+        },
+        "/users/4": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Show",
+                "operationId": "Show",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                },
+                "deprecated": false,
+                "security": [{
+                    "bearer": []
+                }]
+            }
+        },
+        "/users/20000": {
+            "delete": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Destroy",
+                "operationId": "Destroy",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                },
+                "deprecated": false,
+                "security": [{
+                    "bearer": []
+                }]
+            }
+        },
+        "/projects": {
+            "post": {
+                "tags": [
+                    "Project"
+                ],
+                "summary": "Create",
+                "operationId": "PostCreate",
+                "parameters": [],
+                "requestBody": {
+                    "description": "",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [{
+                                        "$ref": "#/components/schemas/CreateRequest1"
+                                    },
+                                    {
+                                        "example": {
+                                            "name": "Task",
+                                            "team_id": 1
+                                        }
+                                    }
+                                ]
+                            },
+                            "example": {
+                                "name": "Task",
+                                "team_id": 1
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                },
+                "deprecated": false,
+                "security": [{
+                    "bearer": []
+                }]
+            },
+            "get": {
+                "tags": [
+                    "Project"
+                ],
+                "summary": "List",
+                "operationId": "GetList",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                },
+                "deprecated": false,
+                "security": [{
+                    "bearer": []
+                }]
+            }
+        },
+        "/projects/2": {
+            "get": {
+                "tags": [
+                    "Project"
+                ],
+                "summary": "Show",
+                "operationId": "GetShow",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                },
+                "deprecated": false,
+                "security": [{
+                    "bearer": []
+                }]
+            },
+            "delete": {
+                "tags": [
+                    "Project"
+                ],
+                "summary": "Destroy",
+                "operationId": "DeleteDestroy",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                },
+                "deprecated": false,
+                "security": [{
+                    "bearer": []
+                }]
+            }
+        },
+        "/projects/1/columns": {
+            "get": {
+                "tags": [
+                    "Project"
+                ],
+                "summary": "Show Project Columns",
+                "operationId": "ShowProjectColumns",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                },
+                "deprecated": false,
+                "security": [{
+                    "bearer": []
+                }]
+            }
+        },
+        "/projects/1": {
+            "put": {
+                "tags": [
+                    "Project"
+                ],
+                "summary": "Update",
+                "operationId": "PutUpdate",
+                "parameters": [],
+                "requestBody": {
+                    "description": "",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [{
+                                        "$ref": "#/components/schemas/UpdateRequest1"
+                                    },
+                                    {
+                                        "example": {
+                                            "name": "Key Task",
+                                            "team_id": 1
+                                        }
+                                    }
+                                ]
+                            },
+                            "example": {
+                                "name": "Key Task",
+                                "team_id": 1
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                },
+                "deprecated": false,
+                "security": [{
+                    "bearer": []
+                }]
+            }
+        },
+        "/teams": {
+            "post": {
+                "tags": [
+                    "Team"
+                ],
+                "summary": "Create",
+                "operationId": "PostCreate1",
+                "parameters": [],
+                "requestBody": {
+                    "description": "",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [{
+                                        "$ref": "#/components/schemas/CreateRequest2"
+                                    },
+                                    {
+                                        "example": {
+                                            "name": "Key Team"
+                                        }
+                                    }
+                                ]
+                            },
+                            "example": {
+                                "name": "Key Team"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                },
+                "deprecated": false,
+                "security": [{
+                    "bearer": []
+                }]
+            },
+            "get": {
+                "tags": [
+                    "Team"
+                ],
+                "summary": "List",
+                "operationId": "GetList1",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                },
+                "deprecated": false,
+                "security": [{
+                    "bearer": []
+                }]
+            }
+        },
+        "/teams/1": {
+            "get": {
+                "tags": [
+                    "Team"
+                ],
+                "summary": "Show",
+                "operationId": "GetShow1",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                },
+                "deprecated": false,
+                "security": [{
+                    "bearer": []
+                }]
+            }
+        },
+        "/teams/1/projects": {
+            "get": {
+                "tags": [
+                    "Team"
+                ],
+                "summary": "Show Team Projects",
+                "operationId": "ShowTeamProjects",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                },
+                "deprecated": false,
+                "security": [{
+                    "bearer": []
+                }]
+            }
+        },
+        "/teams/2": {
+            "put": {
+                "tags": [
+                    "Team"
+                ],
+                "summary": "Update",
+                "operationId": "PutUpdate1",
+                "parameters": [],
+                "requestBody": {
+                    "description": "",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [{
+                                        "$ref": "#/components/schemas/UpdateRequest2"
+                                    },
+                                    {
+                                        "example": {
+                                            "name": "John Johnss"
+                                        }
+                                    }
+                                ]
+                            },
+                            "example": {
+                                "name": "John Johnss"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                },
+                "deprecated": false,
+                "security": [{
+                    "bearer": []
+                }]
+            },
+            "delete": {
+                "tags": [
+                    "Team"
+                ],
+                "summary": "Destroy",
+                "operationId": "DeleteDestroy1",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                },
+                "deprecated": false,
+                "security": [{
+                    "bearer": []
+                }]
+            }
+        },
+        "/columns": {
+            "post": {
+                "tags": [
+                    "Column"
+                ],
+                "summary": "Create",
+                "operationId": "PostCreate2",
+                "parameters": [],
+                "requestBody": {
+                    "description": "",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [{
+                                        "$ref": "#/components/schemas/CreateRequest3"
+                                    },
+                                    {
+                                        "example": {
+                                            "project_id": 1,
+                                            "name": "Finalizado",
+                                            "time": "10:00:00"
+                                        }
+                                    }
+                                ]
+                            },
+                            "example": {
+                                "project_id": 1,
+                                "name": "Finalizado",
+                                "time": "10:00:00"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                },
+                "deprecated": false,
+                "security": [{
+                    "bearer": []
+                }]
+            },
+            "get": {
+                "tags": [
+                    "Column"
+                ],
+                "summary": "List",
+                "operationId": "GetList2",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                },
+                "deprecated": false,
+                "security": [{
+                    "bearer": []
+                }]
+            }
+        },
+        "/columns/1": {
+            "get": {
+                "tags": [
+                    "Column"
+                ],
+                "summary": "Show",
+                "operationId": "GetShow2",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                },
+                "deprecated": false,
+                "security": [{
+                    "bearer": []
+                }]
+            }
+        },
+        "/columns/2/cards": {
+            "get": {
+                "tags": [
+                    "Column"
+                ],
+                "summary": "Show Column Cards",
+                "operationId": "ShowColumnCards",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                },
+                "deprecated": false,
+                "security": [{
+                    "bearer": []
+                }]
+            }
+        },
+        "/columns/6": {
+            "put": {
+                "tags": [
+                    "Column"
+                ],
+                "summary": "Update",
+                "operationId": "PutUpdate2",
+                "parameters": [],
+                "requestBody": {
+                    "description": "",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [{
+                                        "$ref": "#/components/schemas/UpdateRequest3"
+                                    },
+                                    {
+                                        "example": {
+                                            "project_id": 1,
+                                            "name": "AGUARDANDO",
+                                            "order": 2,
+                                            "time": "10:00:00"
+                                        }
+                                    }
+                                ]
+                            },
+                            "example": {
+                                "project_id": 1,
+                                "name": "AGUARDANDO",
+                                "order": 2,
+                                "time": "10:00:00"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                },
+                "deprecated": false,
+                "security": [{
+                    "bearer": []
+                }]
+            }
+        },
+        "/columns/2": {
+            "delete": {
+                "tags": [
+                    "Column"
+                ],
+                "summary": "Destroy",
+                "operationId": "DeleteDestroy2",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                },
+                "deprecated": false,
+                "security": [{
+                    "bearer": []
+                }]
+            }
+        },
+        "/cards": {
+            "post": {
+                "tags": [
+                    "Card"
+                ],
+                "summary": "Create",
+                "operationId": "PostCreate3",
+                "parameters": [],
+                "requestBody": {
+                    "description": "",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [{
+                                        "$ref": "#/components/schemas/CreateRequest4"
+                                    },
+                                    {
+                                        "example": {
+                                            "column_id": 4,
+                                            "order": "1",
+                                            "name": "Atualizar Nota",
+                                            "tag": "ux Design",
+                                            "description": "Selecionar notas fiscais",
+                                            "estimated_date": "2022-09-11 01:28:42"
+                                        }
+                                    }
+                                ]
+                            },
+                            "example": {
+                                "column_id": 4,
+                                "order": "1",
+                                "name": "Atualizar Nota",
+                                "tag": "ux Design",
+                                "description": "Selecionar notas fiscais",
+                                "estimated_date": "2022-09-11 01:28:42"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                },
+                "deprecated": false,
+                "security": [{
+                    "bearer": []
+                }]
+            },
+            "get": {
+                "tags": [
+                    "Card"
+                ],
+                "summary": "List",
+                "operationId": "GetList3",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                },
+                "deprecated": false,
+                "security": [{
+                    "bearer": []
+                }]
+            }
+        },
+        "/cards/2": {
+            "put": {
+                "tags": [
+                    "Card"
+                ],
+                "summary": "Update",
+                "operationId": "PutUpdate3",
+                "parameters": [],
+                "requestBody": {
+                    "description": "",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [{
+                                        "$ref": "#/components/schemas/UpdateRequest4"
+                                    },
+                                    {
+                                        "example": {
+                                            "column_id": 1,
+                                            "order": "1",
+                                            "name": "Pagar Notas Fiscais",
+                                            "description": "Selecionar notas fiscais",
+                                            "estimated_date": "2022-12-30 16:00:00"
+                                        }
+                                    }
+                                ]
+                            },
+                            "example": {
+                                "column_id": 1,
+                                "order": "1",
+                                "name": "Pagar Notas Fiscais",
+                                "description": "Selecionar notas fiscais",
+                                "estimated_date": "2022-12-30 16:00:00"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                },
+                "deprecated": false,
+                "security": [{
+                    "bearer": []
+                }]
+            }
+        },
+        "/auth/register": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "register",
+                "operationId": "register",
+                "parameters": [],
+                "requestBody": {
+                    "description": "",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [{
+                                        "$ref": "#/components/schemas/registerrequest"
+                                    },
+                                    {
+                                        "example": {
+                                            "client_id": "4KUoeIdh2/l5Y9J6VcOp9lY",
+                                            "email": "john.doe@gmail.com",
+                                            "password": "12345678aA!",
+                                            "name": "John Doe"
+                                        }
+                                    }
+                                ]
+                            },
+                            "example": {
+                                "client_id": "4KUoeIdh2/l5Y9J6VcOp9lY",
+                                "email": "john.doe@gmail.com",
+                                "password": "12345678aA!",
+                                "name": "John Doe"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/auth/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "login",
+                "operationId": "login",
+                "parameters": [],
+                "requestBody": {
+                    "description": "",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [{
+                                        "$ref": "#/components/schemas/loginrequest"
+                                    },
+                                    {
+                                        "example": {
+                                            "email": "john.doe@gmail.com",
+                                            "password": "12345678aA!"
+                                        }
+                                    }
+                                ]
+                            },
+                            "example": {
+                                "email": "john.doe@gmail.com",
+                                "password": "12345678aA!"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                },
+                "deprecated": false
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "CreateRequest": {
+                "title": "CreateRequest",
+                "required": [
+                    "client_id",
+                    "email",
+                    "password",
+                    "name"
+                ],
+                "type": "object",
+                "properties": {
+                    "client_id": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "client_id": "4KUoeIdh2/l5Y9J6VcOp9lY",
+                    "email": "john.doe@gmail.com",
+                    "password": "12345678aA!",
+                    "name": "John Doe"
+                }
+            },
+            "UpdateRequest": {
+                "title": "UpdateRequest",
+                "required": [
+                    "email",
+                    "password",
+                    "name"
+                ],
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "email": "jonh.osss@hostmail.com.br",
+                    "password": "12345678aA!",
+                    "name": "jonh"
+                }
+            },
+            "CreateRequest1": {
+                "title": "CreateRequest1",
+                "required": [
+                    "name",
+                    "team_id"
+                ],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "team_id": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "example": {
+                    "name": "Task",
+                    "team_id": 1
+                }
+            },
+            "UpdateRequest1": {
+                "title": "UpdateRequest1",
+                "required": [
+                    "name",
+                    "team_id"
+                ],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "team_id": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "example": {
+                    "name": "Key Task",
+                    "team_id": 1
+                }
+            },
+            "CreateRequest2": {
+                "title": "CreateRequest2",
+                "required": [
+                    "name"
+                ],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "name": "Key Team"
+                }
+            },
+            "UpdateRequest2": {
+                "title": "UpdateRequest2",
+                "required": [
+                    "name"
+                ],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "name": "John Johnss"
+                }
+            },
+            "CreateRequest3": {
+                "title": "CreateRequest3",
+                "required": [
+                    "project_id",
+                    "name",
+                    "time"
+                ],
+                "type": "object",
+                "properties": {
+                    "project_id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "time": {
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "project_id": 1,
+                    "name": "Finalizado",
+                    "time": "10:00:00"
+                }
+            },
+            "UpdateRequest3": {
+                "title": "UpdateRequest3",
+                "required": [
+                    "project_id",
+                    "name",
+                    "order",
+                    "time"
+                ],
+                "type": "object",
+                "properties": {
+                    "project_id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "order": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "time": {
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "project_id": 1,
+                    "name": "AGUARDANDO",
+                    "order": 2,
+                    "time": "10:00:00"
+                }
+            },
+            "CreateRequest4": {
+                "title": "CreateRequest4",
+                "required": [
+                    "column_id",
+                    "order",
+                    "name",
+                    "tag",
+                    "description",
+                    "estimated_date"
+                ],
+                "type": "object",
+                "properties": {
+                    "column_id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "order": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "tag": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "estimated_date": {
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "column_id": 4,
+                    "order": "1",
+                    "name": "Atualizar Nota",
+                    "tag": "ux Design",
+                    "description": "Selecionar notas fiscais",
+                    "estimated_date": "2022-09-11 01:28:42"
+                }
+            },
+            "UpdateRequest4": {
+                "title": "UpdateRequest4",
+                "required": [
+                    "column_id",
+                    "order",
+                    "name",
+                    "description",
+                    "estimated_date"
+                ],
+                "type": "object",
+                "properties": {
+                    "column_id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "order": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "estimated_date": {
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "column_id": 1,
+                    "order": "1",
+                    "name": "Pagar Notas Fiscais",
+                    "description": "Selecionar notas fiscais",
+                    "estimated_date": "2022-12-30 16:00:00"
+                }
+            },
+            "registerrequest": {
+                "title": "registerrequest",
+                "required": [
+                    "client_id",
+                    "email",
+                    "password",
+                    "name"
+                ],
+                "type": "object",
+                "properties": {
+                    "client_id": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "client_id": "4KUoeIdh2/l5Y9J6VcOp9lY",
+                    "email": "john.doe@gmail.com",
+                    "password": "12345678aA!",
+                    "name": "John Doe"
+                }
+            },
+            "loginrequest": {
+                "title": "loginrequest",
+                "required": [
+                    "email",
+                    "password"
+                ],
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "email": "john.doe@gmail.com",
+                    "password": "12345678aA!"
+                }
+            }
+        },
+        "securitySchemes": {
+            "bearer": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "security": [],
+    "tags": [{
+            "name": "User"
+        },
+        {
+            "name": "Project"
+        },
+        {
+            "name": "Team"
+        },
+        {
+            "name": "Column"
+        },
+        {
+            "name": "Card"
+        },
+        {
+            "name": "Auth"
+        }
+    ]
+}

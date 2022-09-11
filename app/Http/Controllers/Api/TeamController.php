@@ -34,6 +34,66 @@ class TeamController extends ApiBaseController
             return $this->sendError($request,  $e );
         }
     }
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function disassociate(Request $request, $id)
+    {
+        try{
+            $validator = Validator::make($request->all(),
+            [
+                'user_id' => 'required',
+            ]);
+
+            if($validator->fails()){
+                return response()->json([
+                    'success' => false,
+                    'message' => 'validation error',
+                    'data' => $validator->errors()
+                ], 401);
+            }
+
+            $team = Team::find($id);
+            $data  = $validator->validated() ;
+            $team->users()->detach($data['user_id']);
+            return $this->sendSuccess($team->users,'Success', $code = 200);
+        }catch(Exception $e ) {
+            return $this->sendError($request,  $e );
+        }
+    }
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function associate(Request $request, $id)
+    {
+        try{
+            $validator = Validator::make($request->all(),
+            [
+                'user_id' => 'required',
+            ]);
+
+            if($validator->fails()){
+                return response()->json([
+                    'success' => false,
+                    'message' => 'validation error',
+                    'data' => $validator->errors()
+                ], 401);
+            }
+
+            $team = Team::find($id);
+            $data  = $validator->validated() ;
+            $team->users()->attach($data['user_id']);
+            return $this->sendSuccess($team->users,'Success', $code = 200);
+        }catch(Exception $e ) {
+            return $this->sendError($request,  $e );
+        }
+    }
 
 
     /**
