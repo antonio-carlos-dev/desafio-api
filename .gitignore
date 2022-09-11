@@ -1,3 +1,4 @@
+!storage/swagger/swagger.json
 /node_modules
 /public/hot
 /public/storage
@@ -13,4 +14,4 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
-!storage/swagger/swagger.json
+
