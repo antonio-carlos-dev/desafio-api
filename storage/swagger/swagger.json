@@ -905,7 +905,7 @@
                 "operationId": "MoveCardsRight",
                 "parameters": [],
                 "requestBody": {
-                    "description": "",
+                    "description": "Move the card in RIGHT, LEFT, UP, DOWN directions",
                     "content": {
                         "application/json": {
                             "schema": {
