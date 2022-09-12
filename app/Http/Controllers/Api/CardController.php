@@ -85,11 +85,11 @@ class CardController extends ApiBaseController
         try{
             $validator = Validator::make($request->all(),
             [
-                'column_id' => 'required',
-                'name' => 'required',
-                'description' => 'required',
-                'estimated_date' => 'required',
-                'tag' => 'required',
+                'column_id' => 'nullable|numeric|min:1',
+                'name' => 'nullable|string',
+                'description' => 'nullable|string',
+                'estimated_date' => 'nullable|date',
+                'tag' => 'nullable|string',
             ]);
 
             if($validator->fails()){
@@ -104,6 +104,7 @@ class CardController extends ApiBaseController
             $model->update($data);
             return $this->sendSuccess($model->fresh(),'Column Updated Successfully', $code = 200);
         } catch(Exception $e ) {
+            dd($e->getMessage());
             return $this->sendError($request,  $e );
         }
     }

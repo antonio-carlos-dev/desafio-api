@@ -714,8 +714,7 @@
                                     },
                                     {
                                         "example": {
-                                            "column_id": 4,
-                                            "order": "1",
+                                            "column_id": 1,
                                             "name": "Atualizar Nota",
                                             "tag": "ux Design",
                                             "description": "Selecionar notas fiscais",
@@ -725,8 +724,7 @@
                                 ]
                             },
                             "example": {
-                                "column_id": 4,
-                                "order": "1",
+                                "column_id": 1,
                                 "name": "Atualizar Nota",
                                 "tag": "ux Design",
                                 "description": "Selecionar notas fiscais",
@@ -785,7 +783,6 @@
                                     {
                                         "example": {
                                             "column_id": 1,
-                                            "order": "1",
                                             "name": "Pagar Notas Fiscais",
                                             "description": "Selecionar notas fiscais",
                                             "estimated_date": "2022-12-30 16:00:00"
@@ -795,7 +792,6 @@
                             },
                             "example": {
                                 "column_id": 1,
-                                "order": "1",
                                 "name": "Pagar Notas Fiscais",
                                 "description": "Selecionar notas fiscais",
                                 "estimated_date": "2022-12-30 16:00:00"
@@ -834,7 +830,6 @@
                                     },
                                     {
                                         "example": {
-                                            "client_id": "4KUoeIdh2/l5Y9J6VcOp9lY",
                                             "email": "john.doe@gmail.com",
                                             "password": "12345678aA!",
                                             "name": "John Doe"
@@ -843,7 +838,6 @@
                                 ]
                             },
                             "example": {
-                                "client_id": "4KUoeIdh2/l5Y9J6VcOp9lY",
                                 "email": "john.doe@gmail.com",
                                 "password": "12345678aA!",
                                 "name": "John Doe"
@@ -879,15 +873,15 @@
                                     },
                                     {
                                         "example": {
-                                            "email": "john.doe@gmail.com",
-                                            "password": "12345678aA!"
+                                            "email": "admin@gmail.com",
+                                            "password": "123@Mudar"
                                         }
                                     }
                                 ]
                             },
                             "example": {
-                                "email": "john.doe@gmail.com",
-                                "password": "12345678aA!"
+                                "email": "admin@gmail.com",
+                                "password": "123@Mudar"
                             }
                         }
                     },
@@ -900,6 +894,50 @@
                     }
                 },
                 "deprecated": false
+            }
+        },
+        "/move/cards/1": {
+            "put": {
+                "tags": [
+                    "Move"
+                ],
+                "summary": "Move Cards Right",
+                "operationId": "MoveCardsRight",
+                "parameters": [],
+                "requestBody": {
+                    "description": "",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [{
+                                        "$ref": "#/components/schemas/MoveCardsRightRequest"
+                                    },
+                                    {
+                                        "example": {
+                                            "direction": "RIGHT",
+                                            "quantity": 1
+                                        }
+                                    }
+                                ]
+                            },
+                            "example": {
+                                "direction": "RIGHT",
+                                "quantity": 1
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                },
+                "deprecated": false,
+                "security": [{
+                    "bearer": []
+                }]
             }
         }
     },
@@ -1126,7 +1164,6 @@
                 "title": "CreateRequest4",
                 "required": [
                     "column_id",
-                    "order",
                     "name",
                     "tag",
                     "description",
@@ -1137,9 +1174,6 @@
                     "column_id": {
                         "type": "integer",
                         "format": "int32"
-                    },
-                    "order": {
-                        "type": "string"
                     },
                     "name": {
                         "type": "string"
@@ -1155,8 +1189,7 @@
                     }
                 },
                 "example": {
-                    "column_id": 4,
-                    "order": "1",
+                    "column_id": 1,
                     "name": "Atualizar Nota",
                     "tag": "ux Design",
                     "description": "Selecionar notas fiscais",
@@ -1167,7 +1200,6 @@
                 "title": "UpdateRequest4",
                 "required": [
                     "column_id",
-                    "order",
                     "name",
                     "description",
                     "estimated_date"
@@ -1177,9 +1209,6 @@
                     "column_id": {
                         "type": "integer",
                         "format": "int32"
-                    },
-                    "order": {
-                        "type": "string"
                     },
                     "name": {
                         "type": "string"
@@ -1193,7 +1222,6 @@
                 },
                 "example": {
                     "column_id": 1,
-                    "order": "1",
                     "name": "Pagar Notas Fiscais",
                     "description": "Selecionar notas fiscais",
                     "estimated_date": "2022-12-30 16:00:00"
@@ -1202,16 +1230,12 @@
             "registerrequest": {
                 "title": "registerrequest",
                 "required": [
-                    "client_id",
                     "email",
                     "password",
                     "name"
                 ],
                 "type": "object",
                 "properties": {
-                    "client_id": {
-                        "type": "string"
-                    },
                     "email": {
                         "type": "string"
                     },
@@ -1223,7 +1247,6 @@
                     }
                 },
                 "example": {
-                    "client_id": "4KUoeIdh2/l5Y9J6VcOp9lY",
                     "email": "john.doe@gmail.com",
                     "password": "12345678aA!",
                     "name": "John Doe"
@@ -1245,8 +1268,92 @@
                     }
                 },
                 "example": {
-                    "email": "john.doe@gmail.com",
-                    "password": "12345678aA!"
+                    "email": "admin@gmail.com",
+                    "password": "123@Mudar"
+                }
+            },
+            "MoveCardsRightRequest": {
+                "title": "MoveCardsRightRequest",
+                "required": [
+                    "direction",
+                    "quantity"
+                ],
+                "type": "object",
+                "properties": {
+                    "direction": {
+                        "type": "string"
+                    },
+                    "quantity": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "example": {
+                    "direction": "RIGHT",
+                    "quantity": 1
+                }
+            },
+            "MoveCardsLeftRequest": {
+                "title": "MoveCardsLeftRequest",
+                "required": [
+                    "direction",
+                    "quantity"
+                ],
+                "type": "object",
+                "properties": {
+                    "direction": {
+                        "type": "string"
+                    },
+                    "quantity": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "example": {
+                    "direction": "LEFT",
+                    "quantity": 1
+                }
+            },
+            "MoveCardsUpRequest": {
+                "title": "MoveCardsUpRequest",
+                "required": [
+                    "direction",
+                    "quantity"
+                ],
+                "type": "object",
+                "properties": {
+                    "direction": {
+                        "type": "string"
+                    },
+                    "quantity": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "example": {
+                    "direction": "UP",
+                    "quantity": 1
+                }
+            },
+            "MoveCardsDownRequest": {
+                "title": "MoveCardsDownRequest",
+                "required": [
+                    "direction",
+                    "quantity"
+                ],
+                "type": "object",
+                "properties": {
+                    "direction": {
+                        "type": "string"
+                    },
+                    "quantity": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "example": {
+                    "direction": "DOWN",
+                    "quantity": 1
                 }
             }
         },
@@ -1275,6 +1382,9 @@
         },
         {
             "name": "Auth"
+        },
+        {
+            "name": "Move"
         }
     ]
 }

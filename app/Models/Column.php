@@ -33,4 +33,9 @@ class Column extends Model
     {
         return $this->hasMany(Card::class);
     }
+
+    public function project ()
+    {
+        return $this->belongsTo(Project::class);
+    }
 }

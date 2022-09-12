@@ -95,10 +95,8 @@ class ColumnController extends ApiBaseController
         try{
             $validator = Validator::make($request->all(),
             [
-                'project_id' => 'required',
-                'name' => 'required',
-                'order' => 'nullable|numeric|min:1',
-                'time' => 'required',
+                'name' => 'nullable|string',
+                'time' => 'nullable|string',
             ]);
 
             if($validator->fails()){

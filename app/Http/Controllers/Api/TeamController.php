@@ -141,7 +141,9 @@ class TeamController extends ApiBaseController
                 [ 'name' => 'required']
             );
             $model = $this->model->find($id);
-
+            if(is_null($model)){
+                throw new Exception('Team Not Found', 204);
+            }
             if($validator->fails()){
                 return response()->json([
                     'success' => false,
